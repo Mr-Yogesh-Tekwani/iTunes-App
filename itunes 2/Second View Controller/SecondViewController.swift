@@ -14,7 +14,18 @@ protocol SecondViewControllerDelegate {
 
 class SecondViewController: UIViewController, UISearchBarDelegate {
 
-    var searchTerm: String?
+    var secondViewModel : SecondViewControllerViewModel?
+    
+    init(secondViewModel: SecondViewControllerViewModel? = nil) {
+        self.secondViewModel = secondViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     
     let tableView: UITableView = {
         let tv = UITableView()
@@ -22,29 +33,11 @@ class SecondViewController: UIViewController, UISearchBarDelegate {
         return tv
     }()
     
-    var data: ResultsModel? {
-        didSet{
-            var kindData: [String:[ResultsData]] = [:]
-            for value in data?.results ?? [] {
-                if let kind = value.kind {
-                    if kindData[kind] != nil {
-                        kindData[kind]?.append(value)
-                    }else{
-                        kindData[kind] = [value]
-                    }
-                }
-            }
-         
-            kindDict = kindData
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
+    
    // var data2 = ["A","B","C"]
    // let searchBar = UISearchBar()
 
-    var kindDict: [String:[ResultsData]] = [:]
+    
     var delegate: SecondViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,12 +48,6 @@ class SecondViewController: UIViewController, UISearchBarDelegate {
         tableView.delegate =  self
         tableView.dataSource = self
        tableView.register(iTunesTableViewCell.self, forCellReuseIdentifier: iTunesTableViewCell.identifier)
-        if let searchTerm = searchTerm {
-            requestData(searchTerm: searchTerm, completionHandler: { artistData in
-                self.data = artistData
-              
-            } )
-        }
         
         
         let safeArea = self.view.safeAreaLayoutGuide
@@ -70,6 +57,10 @@ class SecondViewController: UIViewController, UISearchBarDelegate {
              tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
              tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
              tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor)])
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
     }
 }
 extension SecondViewController: UITableViewDelegate{
@@ -83,24 +74,21 @@ extension SecondViewController: UITableViewDelegate{
 
 extension SecondViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        kindDict.keys.count ?? 0
+        (secondViewModel?.getHeadingCount())!
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        kindDict.keys.sorted()[section]
+        secondViewModel?.getHeadingData(section: section)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(data?.results.count)
-        let key = kindDict.keys.sorted()[section]
-        return kindDict[key]?.count ?? 0
+        (secondViewModel?.getRowCount(section: section))!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        guard let cell = tableView.dequeueReusableCell(withIdentifier: iTunesTableViewCell.identifier) as? iTunesTableViewCell else {
             return UITableViewCell()
         }
-        let key = kindDict.keys.sorted()[indexPath.section]
-        let resultData = kindDict[key]
-        cell.data = resultData?[indexPath.row]
+    
+        cell.data = secondViewModel?.getRowData(rownumber: indexPath.row, section: indexPath.section)
         cell.delegate = self
         return cell
     }
