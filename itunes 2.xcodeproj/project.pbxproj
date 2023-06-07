@@ -16,6 +16,8 @@
 		597E48892A21178400A03908 /* iTunesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E48852A21178400A03908 /* iTunesTableViewCell.swift */; };
 		597E488A2A21178400A03908 /* iTunesNetwokLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E48862A21178400A03908 /* iTunesNetwokLayer.swift */; };
 		597E488B2A21178400A03908 /* LIghtweight_iTuneModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597E48872A21178400A03908 /* LIghtweight_iTuneModel.swift */; };
+		7F1026592A304AD7007AC91F /* ViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1026582A304AD7007AC91F /* ViewControllerViewModel.swift */; };
+		7F10265C2A305346007AC91F /* SecondViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F10265B2A305346007AC91F /* SecondViewControllerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		597E48852A21178400A03908 /* iTunesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesTableViewCell.swift; sourceTree = "<group>"; };
 		597E48862A21178400A03908 /* iTunesNetwokLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesNetwokLayer.swift; sourceTree = "<group>"; };
 		597E48872A21178400A03908 /* LIghtweight_iTuneModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LIghtweight_iTuneModel.swift; sourceTree = "<group>"; };
+		7F1026582A304AD7007AC91F /* ViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerViewModel.swift; sourceTree = "<group>"; };
+		7F10265B2A305346007AC91F /* SecondViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewControllerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,18 +66,36 @@
 		597E486F2A2116DF00A03908 /* itunes 2 */ = {
 			isa = PBXGroup;
 			children = (
+				7F10265D2A305360007AC91F /* Second View Controller */,
 				597E48702A2116DF00A03908 /* AppDelegate.swift */,
 				597E48872A21178400A03908 /* LIghtweight_iTuneModel.swift */,
 				597E48862A21178400A03908 /* iTunesNetwokLayer.swift */,
 				597E48852A21178400A03908 /* iTunesTableViewCell.swift */,
-				597E48842A21178400A03908 /* SecondViewController.swift */,
 				597E48722A2116DF00A03908 /* SceneDelegate.swift */,
-				597E48742A2116DF00A03908 /* ViewController.swift */,
+				7F10265A2A304AE8007AC91F /* View Controller */,
 				597E48792A2116E000A03908 /* Assets.xcassets */,
 				597E487B2A2116E000A03908 /* LaunchScreen.storyboard */,
 				597E487E2A2116E000A03908 /* Info.plist */,
 			);
 			path = "itunes 2";
+			sourceTree = "<group>";
+		};
+		7F10265A2A304AE8007AC91F /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				597E48742A2116DF00A03908 /* ViewController.swift */,
+				7F1026582A304AD7007AC91F /* ViewControllerViewModel.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		7F10265D2A305360007AC91F /* Second View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7F10265B2A305346007AC91F /* SecondViewControllerViewModel.swift */,
+				597E48842A21178400A03908 /* SecondViewController.swift */,
+			);
+			path = "Second View Controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,7 +171,9 @@
 				597E48882A21178400A03908 /* SecondViewController.swift in Sources */,
 				597E488A2A21178400A03908 /* iTunesNetwokLayer.swift in Sources */,
 				597E488B2A21178400A03908 /* LIghtweight_iTuneModel.swift in Sources */,
+				7F1026592A304AD7007AC91F /* ViewControllerViewModel.swift in Sources */,
 				597E48752A2116DF00A03908 /* ViewController.swift in Sources */,
+				7F10265C2A305346007AC91F /* SecondViewControllerViewModel.swift in Sources */,
 				597E48712A2116DF00A03908 /* AppDelegate.swift in Sources */,
 				597E48892A21178400A03908 /* iTunesTableViewCell.swift in Sources */,
 				597E48732A2116DF00A03908 /* SceneDelegate.swift in Sources */,
